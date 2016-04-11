@@ -1,0 +1,15 @@
+[Unit]
+Description=PostgreSQL instances for local development
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Environment="instance=postgres-%i"
+ExecStartPre=-/usr/bin/docker kill postgres-%i
+ExecStartPre=-/usr/bin/docker rm postgres-%i
+ExecStartPre=/usr/bin/docker pull jamesbrink/postgresql
+ExecStart=/usr/bin/docker run --name postgres-%i -p 5432:5432 -e USER=daedalus -e PASSWORD=godaedalusgo -e SCHEMA=daedalus -e POSTGIS=true jamesbrink/postgresql
+ExecStartPost=/usr/bin/sleep 5 ; /usr/bin/docker exec -d postgres-%i /var/lib/postgresql/postgres.sh
+ExecStop=/usr/bin/docker stop postgres-%i
+ExecStop=/usr/bin/etcdctl rm /services/postgres/%i

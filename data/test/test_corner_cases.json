@@ -1,0 +1,39 @@
+{
+  "sheets": [
+    {
+      "columns": [
+        "Value"
+      ],
+      "name": "First",
+      "rows": [
+        [
+          1.0
+        ],
+        null,
+        [
+          1.0
+        ]
+      ]
+    },
+    {
+      "columns": [
+        null
+      ],
+      "name": "Second",
+      "rows": [
+        null
+      ]
+    },
+    {
+      "columns": [
+        "Value",
+        "Value2",
+        "Formula"
+      ],
+      "name": "Third",
+      "rows": [
+        null
+      ]
+    }
+  ]
+}

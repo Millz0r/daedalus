@@ -1,0 +1,12 @@
+[Unit]
+Description=Daedalus container
+After=docker.service rabbitmq@%i.service postgres@%i.service
+Requires=docker.service rabbitmq@%i.service postgres@%i.service
+
+[Service]
+User=core
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill %i
+ExecStartPre=-/usr/bin/docker rm %i
+ExecStart=/bin/bash -c "/usr/bin/docker run --name %i --privileged -v /home/core/share:/daedalus --env-file=/tmp/env.file -e PYTHONUNBUFFERED=true -e ENVIRONMENT=%i -p 80:5000 --add-host %H:$( ( ifconfig eth0 2> /dev/null || ifconfig enp0s8 2> /dev/null ) | awk '/inet / { print $2 }' ) daedalus-dev /bin/bash -c 'pip install honcho -r requirements.txt ; honcho start'"
+ExecStop=/usr/bin/docker stop %i

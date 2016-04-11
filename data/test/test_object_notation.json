@@ -1,0 +1,13 @@
+{
+  "sheets": [
+    {
+      "columns": ["first", "second", "third", "fourth"],
+      "name": "new_sheet",
+      "rows": [
+        { "first": "First Value", "second": "Second Value", "third": "Third Value", "fourth": "Fourth Value" },
+        { "second": "Value 2", "third": "More Cowbell" },
+        { "first": "Vanilla", "second": "Strawberry", "eight": "Banana" }
+      ]
+    }
+  ]
+}
