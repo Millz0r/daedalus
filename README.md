@@ -1,5 +1,5 @@
 #Daedalus
-Daedalus is the real-time property analytics engine.
+Daedalus is a real-time property analytics engine. This is an abandonded project I used to work on displayed as a showcase.
 
 ##Main files and directories
 
